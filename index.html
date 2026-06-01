@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sugar Soul - Comida urbana de alta calidad en Cartagena. Smash burgers, pizzas artesanales, donuts y más. C. Alfonso XIII, 3, Los Dolores.">
+<meta name="keywords" content="Sugar Soul, Cartagena, hamburguesas, pizzas, donuts, Los Dolores, smash burger, comida urbana">
+<title>Sugar Soul | Cartagena</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --orange: #FF5C00;
+    --cream: #F5EFE0;
+    --dark: #111111;
+    --mid: #1e1e1e;
+    --text: #ccc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* LANGUAGE TOGGLE */
+  .lang-toggle {
+    position: fixed;
+    top: 18px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 6px;
+  }
+  .lang-btn {
+    background: transparent;
+    border: 1px solid var(--orange);
+    color: var(--cream);
+    padding: 5px 12px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+  }
+  .lang-btn.active { background: var(--orange); color: #fff; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    padding: 18px 40px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #222;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 4px;
+    color: var(--orange);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    margin-left: auto;
+    margin-right: 100px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--orange); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 8vw;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(255,92,0,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(255,92,0,0.07) 0%, transparent 50%);
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 14vw, 160px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    color: var(--cream);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+  .hero-title span { color: var(--orange); }
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(16px, 2.5vw, 24px);
+    color: var(--text);
+    margin-top: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    margin-top: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--orange);
+    color: #fff;
+    padding: 14px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: #e05000; }
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    padding: 14px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid rgba(245,239,224,0.4);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+  .hero-badge {
+    position: absolute;
+    right: 8vw;
+    bottom: 12vh;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: var(--orange);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    animation: spin 20s linear infinite;
+    opacity: 0.9;
+  }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MARQUEE */
+  .marquee-wrap {
+    overflow: hidden;
+    background: var(--orange);
+    padding: 14px 0;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: marquee 18s linear infinite;
+  }
+  .marquee-track span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 4px;
+    color: #fff;
+    padding: 0 32px;
+  }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTIONS */
+  section { padding: 100px 8vw; }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 7vw, 80px);
+    line-height: 1;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 60px;
+  }
+  .about-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .stat-box {
+    background: var(--mid);
+    padding: 40px 30px;
+    border-left: 3px solid var(--orange);
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .stat-label { font-size: 12px; letter-spacing: 2px; color: var(--text); margin-top: 8px; }
+
+  /* MENU */
+  #menu { background: var(--dark); }
+  .menu-tabs {
+    display: flex;
+    gap: 4px;
+    margin: 40px 0 50px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    background: transparent;
+    border: 1px solid #333;
+    color: var(--text);
+    padding: 10px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: #fff;
+  }
+  .menu-panel { display: none; }
+  .menu-panel.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; }
+  .menu-item {
+    background: var(--mid);
+    padding: 28px;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .menu-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--orange);
+    transform: scaleY(0);
+    transition: transform 0.3s;
+    transform-origin: bottom;
+  }
+  .menu-item:hover::before { transform: scaleY(1); }
+  .menu-item:hover { background: #252525; }
+  .item-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .item-desc { font-size: 13px; color: var(--text); line-height: 1.6; margin-bottom: 16px; }
+  .item-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--orange);
+  }
+
+  /* LOCATION */
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 60px;
+    align-items: start;
+  }
+  .info-block { margin-bottom: 40px; }
+  .info-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+  .info-value { font-size: 16px; line-height: 1.7; color: var(--cream); }
+  .map-placeholder {
+    background: var(--mid);
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #333;
+    font-size: 13px;
+    color: var(--text);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px;
+  }
+  .map-placeholder a {
+    display: block;
+    margin-top: 12px;
+    color: var(--orange);
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--dark); }
+  .contact-form {
+    max-width: 640px;
+    margin-top: 50px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 8px;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: var(--mid);
+    border: 1px solid #333;
+    color: var(--cream);
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--orange); }
+  .form-group select option { background: var(--mid); }
+  .form-group textarea { height: 120px; resize: none; }
+
+  /* BOOKING */
+  #booking { background: var(--black); }
+  .booking-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 60px;
+    align-items: start;
+  }
+  .booking-info p { font-size: 16px; color: var(--text); line-height: 1.8; margin-bottom: 20px; }
+  .booking-highlight {
+    background: var(--mid);
+    border-left: 3px solid var(--orange);
+    padding: 24px;
+    margin-top: 30px;
+  }
+  .booking-highlight p { font-size: 14px; color: var(--text); margin: 0; }
+
+  /* QR SECTION */
+  .qr-section {
+    text-align: center;
+    padding: 80px 8vw;
+    background: var(--orange);
+  }
+  .qr-section .section-title { color: #fff; }
+  .qr-section p { color: rgba(255,255,255,0.85); font-size: 16px; max-width: 500px; margin: 0 auto 40px; line-height: 1.7; }
+  .qr-box {
+    display: inline-block;
+    background: #fff;
+    padding: 20px;
+    margin: 0 auto;
+  }
+  .qr-box img { width: 160px; height: 160px; display: block; }
+  .qr-label { font-size: 12px; letter-spacing: 3px; color: var(--orange); margin-top: 12px; text-transform: uppercase; }
+
+  /* FOOTER */
+  footer {
+    background: #050505;
+    padding: 50px 8vw 30px;
+    border-top: 1px solid #1a1a1a;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 50px;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 4px;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+  .footer-desc { font-size: 14px; color: var(--text); line-height: 1.7; }
+  .footer-col h4 {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--cream); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    border-top: 1px solid #1a1a1a;
+    font-size: 12px;
+    color: #555;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    section { padding: 70px 6vw; }
+    .about-grid, .location-grid, .booking-grid, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero { padding: 0 6vw; }
+    .hero-badge { display: none; }
+    .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  }
+
+  /* NOTIFICATION */
+  .notif {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--orange);
+    color: #fff;
+    padding: 16px 24px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    z-index: 9999;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.4s;
+  }
+  .notif.show { transform: translateY(0); opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- Language Toggle -->
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('es')">ES</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- Nav -->
+<nav>
+  <a href="#" class="nav-logo">Sugar Soul</a>
+  <ul class="nav-links">
+    <li><a href="#about" data-es="Nosotros" data-en="About">Nosotros</a></li>
+    <li><a href="#menu" data-es="Carta" data-en="Menu">Carta</a></li>
+    <li><a href="#booking" data-es="Reservas" data-en="Booking">Reservas</a></li>
+    <li><a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <p class="hero-eyebrow" data-es="Los Dolores, Cartagena" data-en="Los Dolores, Cartagena">Los Dolores, Cartagena</p>
+  <h1 class="hero-title">SUGAR<br><span>SOUL</span></h1>
+  <p class="hero-sub" data-es="Comida urbana hecha con alma." data-en="Urban food made with soul.">Comida urbana hecha con alma.</p>
+  <div class="hero-cta">
+    <a href="#menu" class="btn-primary" data-es="Ver Carta" data-en="See Menu">Ver Carta</a>
+    <a href="#booking" class="btn-outline" data-es="Reservar Mesa" data-en="Book a Table">Reservar Mesa</a>
+  </div>
+  <div class="hero-badge">OPEN<br>NOW<br>★ ★ ★</div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>SMASH BURGER</span><span>·</span>
+    <span>PIZZAS ARTESANALES</span><span>·</span>
+    <span>SUGAR DONAS</span><span>·</span>
+    <span>BBQ RIBS</span><span>·</span>
+    <span>CREPS</span><span>·</span>
+    <span>BATIDOS</span><span>·</span>
+    <span>CAFÉS</span><span>·</span>
+    <span>SMASH BURGER</span><span>·</span>
+    <span>PIZZAS ARTESANALES</span><span>·</span>
+    <span>SUGAR DONAS</span><span>·</span>
+    <span>BBQ RIBS</span><span>·</span>
+    <span>CREPS</span><span>·</span>
+    <span>BATIDOS</span><span>·</span>
+    <span>CAFÉS</span><span>·</span>
+  </div>
+</div>
+
+<!-- About -->
+<section id="about">
+  <p class="section-label" data-es="Quiénes somos" data-en="Who we are">Quiénes somos</p>
+  <h2 class="section-title" data-es="EL ALMA<br>DE CARTAGENA" data-en="THE SOUL<br>OF CARTAGENA">EL ALMA<br>DE CARTAGENA</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p data-es="Sugar Soul es un espacio de comida urbana de alta calidad en el corazón de Los Dolores. Nuestra estética rompe con el bar de barrio tradicional: diseño industrial, moderno y una iluminación cálida que invita a la experiencia 'Soul'." data-en="Sugar Soul is a high-quality urban food space in the heart of Los Dolores. Our aesthetic breaks with the traditional neighbourhood bar: industrial, modern design and warm lighting that invites you into the 'Soul' experience.">
+        Sugar Soul es un espacio de comida urbana de alta calidad en el corazón de Los Dolores. Nuestra estética rompe con el bar de barrio tradicional: diseño industrial, moderno y una iluminación cálida que invita a la experiencia 'Soul'.
+      </p>
+      <p data-es="No intentamos hacer de todo — lo que hacemos, lo hacemos con técnica, ingredientes de calidad y la pasión de quienes aman la buena comida." data-en="We don't try to do everything — what we do, we do with technique, quality ingredients and the passion of those who love great food.">
+        No intentamos hacer de todo — lo que hacemos, lo hacemos con técnica, ingredientes de calidad y la pasión de quienes aman la buena comida.
+      </p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-box">
+        <div class="stat-num">100%</div>
+        <div class="stat-label" data-es="ARTESANAL" data-en="HANDMADE">ARTESANAL</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">5+</div>
+        <div class="stat-label" data-es="SALSAS PROPIAS" data-en="HOUSE SAUCES">SALSAS PROPIAS</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">4★</div>
+        <div class="stat-label" data-es="EN GOOGLE" data-en="ON GOOGLE">EN GOOGLE</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">∞</div>
+        <div class="stat-label" data-es="SABORES" data-en="FLAVOURS">SABORES</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section id="menu">
+  <p class="section-label" data-es="Lo que ofrecemos" data-en="What we offer">Lo que ofrecemos</p>
+  <h2 class="section-title" data-es="NUESTRA CARTA" data-en="OUR MENU">NUESTRA CARTA</h2>
+  <div class="menu-tabs">
+    <button class="tab-btn active" onclick="showTab('burgers')" data-es="🍔 Burgers" data-en="🍔 Burgers">🍔 Burgers</button>
+    <button class="tab-btn" onclick="showTab('pizzas')" data-es="🍕 Pizzas" data-en="🍕 Pizzas">🍕 Pizzas</button>
+    <button class="tab-btn" onclick="showTab('entrantes')" data-es="🧀 Entrantes" data-en="🧀 Starters">🧀 Entrantes</button>
+    <button class="tab-btn" onclick="showTab('dulces')" data-es="🍩 Dulces" data-en="🍩 Sweets">🍩 Dulces</button>
+    <button class="tab-btn" onclick="showTab('bebidas')" data-es="🥤 Bebidas" data-en="🥤 Drinks">🥤 Bebidas</button>
+    <button class="tab-btn" onclick="showTab('desayunos')" data-es="☕ Desayunos" data-en="☕ Breakfast">☕ Desayunos</button>
+  </div>
+
+  <!-- Burgers -->
+  <div class="menu-panel active" id="tab-burgers">
+    <div class="menu-item">
+      <div class="item-name">ARIZONA</div>
+      <div class="item-desc">Doble smash, doble cheddar, bacon, salsa Arizona, cebolla y pepinillo</div>
+      <div class="item-price">8,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">SUGAR MAMI</div>
+      <div class="item-desc">Doble smash, doble cheddar, salsa sugar barbacoa, candy bacon, cebolla caramelizada, cebolla y maíz</div>
+      <div class="item-price">8,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">BÚFALO</div>
+      <div class="item-desc">Doble smash, doble cheddar, pulled pork, salsa barbacoa búfalo y bites doritos</div>
+      <div class="item-price">8,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">MANGO LOCO</div>
+      <div class="item-desc">Doble smash, doble cheddar, cochinita pibil, salsa de mango picante y cebolla frita</div>
+      <div class="item-price">8,90€</div>
+    </div>
+  </div>
+
+  <!-- Pizzas -->
+  <div class="menu-panel" id="tab-pizzas">
+    <div class="menu-item" style="grid-column: 1/-1; background: #252525; border-left: 3px solid var(--orange);">
+      <div class="item-name">🍕 PIZZA PERSONALIZADA</div>
+      <div class="item-desc" style="margin-bottom:12px;">Elige tu base, salsas, quesos, carnes y extras. Incluye 1 salsa y mozzarella.</div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap:16px; font-size:13px; color:var(--text);">
+        <div><span style="color:var(--orange);font-size:11px;letter-spacing:2px;">CARNES</span><br>Vacuno · Pollo · Bacon · Jamón york · Pepperoni · Pulled pork · Cochinita pibil · Candy bacon · Chorizo picante</div>
+        <div><span style="color:var(--orange);font-size:11px;letter-spacing:2px;">SALSAS</span><br>Tomate · Barbacoa búfalo · Sugar barbacoa · Arizona · Mango loco</div>
+        <div><span style="color:var(--orange);font-size:11px;letter-spacing:2px;">QUESOS</span><br>Mozzarella · Cheddar · Mix 4 quesos · Gorgonzola</div>
+        <div><span style="color:var(--orange);font-size:11px;letter-spacing:2px;">OTROS</span><br>Cebolla · Pepinillo · Maíz · Bites doritos · Tomatitos caramelizados · Jalapeños</div>
+      </div>
+      <div style="margin-top:16px; font-size:12px; color:#888;">Extra toppings: +1,00€ por ingrediente</div>
+      <div class="item-price" style="margin-top:12px;">5,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">SUGAR PAPI</div>
+      <div class="item-desc">Tomate, mozzarella, pepperoni y tomatitos caramelizados</div>
+      <div class="item-price">8,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">LA ESPECIAL</div>
+      <div class="item-desc">Tomate, pollo, mozzarella, cebolla y maíz</div>
+      <div class="item-price">8,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">SUGAR MAMI</div>
+      <div class="item-desc">Sugar barbacoa, mozzarella, cheddar, candy bacon, pollo, cebolla caramelizada, maíz y cebolla</div>
+      <div class="item-price">8,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">BÚFALO</div>
+      <div class="item-desc">Barbacoa búfalo, mozzarella, cheddar, vacuno, pulled pork y bites de doritos</div>
+      <div class="item-price">8,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">DIÁVOLA</div>
+      <div class="item-desc">Tomate, mozzarella, chorizo picante y jalapeños</div>
+      <div class="item-price">8,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">5 QUESOS</div>
+      <div class="item-desc">Tomate, mozzarella, cheddar, gouda, emmental y gorgonzola</div>
+      <div class="item-price">8,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">ARIZONA</div>
+      <div class="item-desc">Tomate, mozzarella, cheddar, vacuno, bacon, pepinillos, cebolla y salsa Arizona</div>
+      <div class="item-price">8,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">CARNÍVORA</div>
+      <div class="item-desc">Tomate, mozzarella, vacuno, pepperoni, pollo y bacon</div>
+      <div class="item-price">8,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">MANGO LOCO</div>
+      <div class="item-desc">Mango picante, mozzarella, cheddar, vacuno, cochinita pibil y cebolla frita</div>
+      <div class="item-price">8,90€</div>
+    </div>
+  </div>
+
+  <!-- Entrantes -->
+  <div class="menu-panel" id="tab-entrantes">
+    <div class="menu-item">
+      <div class="item-name">CHEESE BACON</div>
+      <div class="item-desc">Patatas, mozzarella, cheddar, bacon y salsa Arizona</div>
+      <div class="item-price">5,50€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">NACHOS CON QUESO</div>
+      <div class="item-desc">Totopos, carne de vacuno, mozzarella, cheddar y salsa Arizona</div>
+      <div class="item-price">5,50€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">PAN DE AJO CON QUESO</div>
+      <div class="item-desc">4 panes de ajo con mozzarella</div>
+      <div class="item-price">4,50€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">POPITAS DE POLLO</div>
+      <div class="item-desc">Crujientes bites de pollo con tu salsa favorita</div>
+      <div class="item-price">3,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">RACIÓN DE PATATAS</div>
+      <div class="item-desc">Patatas fritas crujientes</div>
+      <div class="item-price">2,50€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">FINGUER DE QUESO</div>
+      <div class="item-desc">Deditos de queso crujientes por fuera, fundidos por dentro</div>
+      <div class="item-price">3,90€</div>
+    </div>
+  </div>
+
+  <!-- Dulces -->
+  <div class="menu-panel" id="tab-dulces">
+    <div class="menu-item">
+      <div class="item-name">SUGAR DONAS</div>
+      <div class="item-desc">Personaliza tu sugar dona con tus toppings favoritos. Incluye 2 toppings.</div>
+      <div class="item-price">3,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">DONUTS</div>
+      <div class="item-desc">Clásicos donuts artesanales frescos del día</div>
+      <div class="item-price">2,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">CREPS</div>
+      <div class="item-desc">Con tus toppings favoritos. Incluye 2 toppings. Extra topping: +0,70€</div>
+      <div class="item-price">3,50€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">PIZZAS DULCES</div>
+      <div class="item-desc">Pizza dulce artesanal. Incluye 1 topping. Extra topping: +1,00€</div>
+      <div class="item-price">5,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">CROFFLE</div>
+      <div class="item-desc">Masa de croissant hecha gofre. Incluye 2 toppings.</div>
+      <div class="item-price">3,50€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">CHUCHES ESPACIALES</div>
+      <div class="item-desc">Tus gominolas favoritas sometidas al proceso de comida de astronautas</div>
+      <div class="item-price">5,60€</div>
+    </div>
+    <div class="menu-item" style="grid-column: 1/-1; background: #252525; border-left: 3px solid var(--orange);">
+      <div class="item-name">🍫 TOPPINGS DISPONIBLES</div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:16px; font-size:13px; color:var(--text); margin-top:12px;">
+        <div><span style="color:var(--orange);font-size:11px;letter-spacing:2px;">CREMAS</span><br>Nutella · Galleta Caramelizada · Kinder · Turrón · Pistacho · Chocolate Blanco · Choco Blanco y Oreo · Cacahuete · Reese's</div>
+        <div><span style="color:var(--orange);font-size:11px;letter-spacing:2px;">TROZOS</span><br>Oreo · Filipinos · Reese's · Galleta Caramelizada · Almendra Crocanti · Nubes · Lacasitos · Conguitos</div>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">BATIDOS</div>
+      <div class="item-desc">Oreo · Lotus · Kinder · Pistacho · Bombón de Café · Turrón</div>
+      <div class="item-price">3,90€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">COOKIES</div>
+      <div class="item-desc">Clásica · Lotus · Kinder · Chocolate Blanco — horneadas al momento</div>
+      <div class="item-price">2,60€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">TARTAS</div>
+      <div class="item-desc">Oreo · Carrot Cake · Muerte por Chocolate · Cheesecake Lotus</div>
+      <div class="item-price">4,90€</div>
+    </div>
+  </div>
+
+  <!-- Bebidas -->
+  <div class="menu-panel" id="tab-bebidas">
+    <div class="menu-item">
+      <div class="item-name">REFRESCOS</div>
+      <div class="item-desc">Fanta naranja/limón · Coca-Cola · Coca-Cola Zero · Nestea · Aquarius limón</div>
+      <div class="item-price">1,80€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">CERVEZAS</div>
+      <div class="item-desc">Caña Águila (1,50€) · 1/5 Águila (1,30€) · 1/3 Águila (2,00€) · 1/3 Heineken (2,50€) · 1/3 Heineken 0,0 (2,50€) · 1/3 1870 (2,50€) · 1/3 Alcazar (2,50€) · Tanque Águila (2,90€) · Radler (1,80€)</div>
+      <div class="item-price">desde 1,30€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">AGUA</div>
+      <div class="item-desc">Botellín 0,5L · Botella 1,5L</div>
+      <div class="item-price">1,00€ / 2,00€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">ZUMOS</div>
+      <div class="item-desc">Naranja (1,80€) · Piña (1,60€) · Melocotón (1,60€) · Colacao (1,50€) · Nesquik (1,50€)</div>
+      <div class="item-price">desde 1,50€</div>
+    </div>
+    <div class="menu-item" style="grid-column:1/-1; background:#252525; border-left:3px solid var(--orange);">
+      <div class="item-name">☕ CAFÉS & TOSTADAS</div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap:16px; font-size:13px; color:var(--text); margin-top:12px;">
+        <div>
+          <span style="color:var(--orange);font-size:11px;letter-spacing:2px;">CAFÉS</span><br>
+          Solo 1,20€ · Americano 1,40€ · Cortado 1,40€ · Bombón 1,40€ · Manchado 1,40€ · Con Leche 1,50€ · Manchada 1,50€ · Canario 1,60€ · Belmonte 1,60€ · Carajillo 1,60€ · Asiático 1,90€ · Asiático Baileys 1,90€ · Cappuccino 1,80€
+        </div>
+        <div>
+          <span style="color:var(--orange);font-size:11px;letter-spacing:2px;">TOSTADAS</span><br>
+          Tomate: Entera 1,30€ / Media 0,70€<br>
+          Mantequilla: Entera 1,30€ / Media 0,70€<br>
+          Mermelada Fresa: Entera 1,90€ / Media 1,00€<br>
+          Mermelada Melocotón: Entera 1,90€ / Media 1,00€<br>
+          <span style="color:#888; font-size:12px;">Extras +0,60€: Jamón serrano · Queso fresco · Atún · Jamón york</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Booking -->
+<section id="booking">
+  <p class="section-label" data-es="Reservas" data-en="Reservations">Reservas</p>
+  <h2 class="section-title" data-es="RESERVA TU MESA" data-en="BOOK YOUR TABLE">RESERVA TU MESA</h2>
+  <div class="booking-grid">
+    <div class="booking-info">
+      <p data-es="¿Celebración especial, comida de empresa o simplemente quieres asegurar tu sitio? Reserva tu mesa en Sugar Soul y te garantizamos una experiencia única." data-en="Special celebration, business lunch or just want to secure your spot? Book your table at Sugar Soul and we guarantee a unique experience.">
+        ¿Celebración especial, comida de empresa o simplemente quieres asegurar tu sitio? Reserva tu mesa en Sugar Soul y te garantizamos una experiencia única.
+      </p>
+      <div class="booking-highlight">
+        <p data-es="📍 C. Alfonso XIII, 3, Los Dolores, Cartagena<br>📞 Para reservas urgentes, llámanos directamente." data-en="📍 C. Alfonso XIII, 3, Los Dolores, Cartagena<br>📞 For urgent bookings, call us directly.">
+          📍 C. Alfonso XIII, 3, Los Dolores, Cartagena<br>📞 Para reservas urgentes, llámanos directamente.
+        </p>
+      </div>
+    </div>
+    <div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-es="Nombre" data-en="Name">Nombre</label>
+          <input type="text" id="book-name" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label data-es="Teléfono" data-en="Phone">Teléfono</label>
+          <input type="tel" id="book-phone" placeholder="+34 600 000 000">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-es="Fecha" data-en="Date">Fecha</label>
+          <input type="date" id="book-date">
+        </div>
+        <div class="form-group">
+          <label data-es="Hora" data-en="Time">Hora</label>
+          <input type="time" id="book-time">
+        </div>
+      </div>
+      <div class="form-group">
+        <label data-es="Número de personas" data-en="Number of people">Número de personas</label>
+        <select id="book-people">
+          <option>1 persona</option>
+          <option>2 personas</option>
+          <option>3 personas</option>
+          <option>4 personas</option>
+          <option>5–6 personas</option>
+          <option>7+ personas</option>
+        </select>
+      </div>
+      <button class="btn-primary" onclick="submitBooking()" style="width:100%;justify-content:center;" data-es="CONFIRMAR RESERVA" data-en="CONFIRM BOOKING">CONFIRMAR RESERVA</button>
+    </div>
+  </div>
+</section>
+
+  <!-- Desayunos -->
+  <div class="menu-panel" id="tab-desayunos">
+    <div class="menu-item">
+      <div class="item-name">CAFÉS</div>
+      <div class="item-desc">Solo (1,20€) · Americano (1,40€) · Cortado (1,40€) · Bombón (1,40€) · Manchado (1,40€) · Con Leche (1,50€) · Manchada (1,50€) · Canario (1,60€) · Belmonte (1,60€) · Carajillo (1,60€) · Cappuccino (1,80€) · Asiático (1,90€) · Asiático Baileys (1,90€)</div>
+      <div class="item-price">desde 1,20€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">TOSTADAS</div>
+      <div class="item-desc">
+        Tomate: Entera 1,30€ / Media 0,70€<br>
+        Mantequilla: Entera 1,30€ / Media 0,70€<br>
+        Mermelada Fresa: Entera 1,90€ / Media 1,00€<br>
+        Mermelada Melocotón: Entera 1,90€ / Media 1,00€<br>
+        <br>Extras +0,60€: Jamón serrano · Queso fresco · Atún · Jamón york
+      </div>
+      <div class="item-price">desde 0,70€</div>
+    </div>
+    <div class="menu-item">
+      <div class="item-name">ZUMOS Y MÁS</div>
+      <div class="item-desc">Naranja (1,80€) · Piña (1,60€) · Melocotón (1,60€) · Colacao (1,50€) · Nesquik (1,50€)</div>
+      <div class="item-price">desde 1,50€</div>
+    </div>
+  </div>
+<div class="qr-section">
+  <p class="section-label" style="color:rgba(255,255,255,0.7)" data-es="Acceso rápido" data-en="Quick access">Acceso rápido</p>
+  <h2 class="section-title" data-es="ESCANEA Y VE<br>NUESTRA CARTA" data-en="SCAN AND SEE<br>OUR MENU">ESCANEA Y VE<br>NUESTRA CARTA</h2>
+  <p data-es="Escanea el QR con tu móvil y accede a nuestra carta completa al instante." data-en="Scan the QR with your phone and access our full menu instantly.">Escanea el QR con tu móvil y accede a nuestra carta completa al instante.</p>
+  <div class="qr-box">
+    <!-- QR placeholder — reemplazar con QR real de la URL de la web -->
+    <svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+      <rect width="160" height="160" fill="white"/>
+      <rect x="10" y="10" width="60" height="60" fill="none" stroke="#FF5C00" stroke-width="4"/>
+      <rect x="20" y="20" width="40" height="40" fill="#FF5C00"/>
+      <rect x="90" y="10" width="60" height="60" fill="none" stroke="#FF5C00" stroke-width="4"/>
+      <rect x="100" y="20" width="40" height="40" fill="#FF5C00"/>
+      <rect x="10" y="90" width="60" height="60" fill="none" stroke="#FF5C00" stroke-width="4"/>
+      <rect x="20" y="100" width="40" height="40" fill="#FF5C00"/>
+      <rect x="90" y="90" width="10" height="10" fill="#FF5C00"/>
+      <rect x="105" y="90" width="10" height="10" fill="#FF5C00"/>
+      <rect x="120" y="90" width="10" height="10" fill="#FF5C00"/>
+      <rect x="135" y="90" width="15" height="10" fill="#FF5C00"/>
+      <rect x="90" y="105" width="25" height="10" fill="#FF5C00"/>
+      <rect x="120" y="105" width="10" height="10" fill="#FF5C00"/>
+      <rect x="90" y="120" width="10" height="10" fill="#FF5C00"/>
+      <rect x="105" y="120" width="25" height="10" fill="#FF5C00"/>
+      <rect x="90" y="135" width="15" height="10" fill="#FF5C00"/>
+      <rect x="120" y="135" width="30" height="10" fill="#FF5C00"/>
+    </svg>
+  </div>
+  <p class="qr-label" data-es="MENÚ DIGITAL" data-en="DIGITAL MENU">MENÚ DIGITAL</p>
+</div>
+
+<!-- Location -->
+<section id="location">
+  <p class="section-label" data-es="Dónde estamos" data-en="Where we are">Dónde estamos</p>
+  <h2 class="section-title" data-es="ENCUÉNTRANOS" data-en="FIND US">ENCUÉNTRANOS</h2>
+  <div class="location-grid">
+    <div>
+      <div class="info-block">
+        <div class="info-label" data-es="Dirección" data-en="Address">Dirección</div>
+        <div class="info-value">C. Alfonso XIII, 3<br>Los Dolores, Cartagena</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label" data-es="Horario" data-en="Hours">Horario</div>
+        <div class="info-value" data-es="Lunes – Domingo<br>12:00 – 23:00" data-en="Monday – Sunday<br>12:00 – 23:00">Lunes – Domingo<br>12:00 – 23:00</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label" data-es="Síguenos" data-en="Follow us">Síguenos</div>
+        <div class="info-value">@sugarsoul_cartagena</div>
+      </div>
+    </div>
+    <div class="map-placeholder">
+      <div>
+        <div>📍 C. Alfonso XIII, 3<br>Los Dolores, Cartagena</div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Sugar+Soul+Cartagena+C.+Alfonso+XIII+3+Los+Dolores" target="_blank" data-es="Ver en Google Maps →" data-en="View on Google Maps →">Ver en Google Maps →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <p class="section-label" data-es="Escríbenos" data-en="Write to us">Escríbenos</p>
+  <h2 class="section-title" data-es="CONTACTO" data-en="CONTACT">CONTACTO</h2>
+  <div class="contact-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label data-es="Nombre" data-en="Name">Nombre</label>
+        <input type="text" id="c-name" placeholder="Tu nombre">
+      </div>
+      <div class="form-group">
+        <label data-es="Email" data-en="Email">Email</label>
+        <input type="email" id="c-email" placeholder="email@ejemplo.com">
+      </div>
+    </div>
+    <div class="form-group">
+      <label data-es="Asunto" data-en="Subject">Asunto</label>
+      <select id="c-subject">
+        <option data-es="Información general" data-en="General information">Información general</option>
+        <option data-es="Eventos y celebraciones" data-en="Events and celebrations">Eventos y celebraciones</option>
+        <option data-es="Alergias e intolerancias" data-en="Allergies and intolerances">Alergias e intolerancias</option>
+        <option data-es="Otro" data-en="Other">Otro</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label data-es="Mensaje" data-en="Message">Mensaje</label>
+      <textarea id="c-msg" placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+    </div>
+    <button class="btn-primary" onclick="submitContact()" data-es="ENVIAR MENSAJE" data-en="SEND MESSAGE">ENVIAR MENSAJE</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">Sugar Soul</div>
+      <p class="footer-desc" data-es="Comida urbana de alta calidad en el corazón de Los Dolores, Cartagena. Hecha con alma, técnica y los mejores ingredientes." data-en="High quality urban food in the heart of Los Dolores, Cartagena. Made with soul, technique and the finest ingredients.">
+        Comida urbana de alta calidad en el corazón de Los Dolores, Cartagena. Hecha con alma, técnica y los mejores ingredientes.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4 data-es="Carta" data-en="Menu">Carta</h4>
+      <ul>
+        <li><a href="#menu" onclick="showTab('burgers')">Smash Burgers</a></li>
+        <li><a href="#menu" onclick="showTab('pizzas')">Pizzas</a></li>
+        <li><a href="#menu" onclick="showTab('entrantes')" data-es="Entrantes" data-en="Starters">Entrantes</a></li>
+        <li><a href="#menu" onclick="showTab('dulces')" data-es="Dulces" data-en="Sweets">Dulces</a></li>
+        <li><a href="#menu" onclick="showTab('bebidas')" data-es="Bebidas" data-en="Drinks">Bebidas</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-es="Visita" data-en="Visit">Visita</h4>
+      <ul>
+        <li><a href="#booking" data-es="Reservar mesa" data-en="Book a table">Reservar mesa</a></li>
+        <li><a href="#location" data-es="Cómo llegar" data-en="How to get here">Cómo llegar</a></li>
+        <li><a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a></li>
+        <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Sugar Soul · Los Dolores, Cartagena</span>
+    <span data-es="Carta disponible con material de alergias e intolerancias alimentarias." data-en="Menu available with allergen and food intolerance information.">Carta disponible con material de alergias e intolerancias alimentarias.</span>
+  </div>
+</footer>
+
+<!-- Notification -->
+<div class="notif" id="notif"></div>
+
+<script>
+  // LANGUAGE
+  let currentLang = 'es';
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+    document.querySelectorAll('[data-es]').forEach(el => {
+      const text = el.getAttribute(`data-${lang}`);
+      if (text) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = text;
+        } else {
+          el.innerHTML = text;
+        }
+      }
+    });
+    // Update select options
+    document.querySelectorAll('select option[data-es]').forEach(opt => {
+      const text = opt.getAttribute(`data-${lang}`);
+      if (text) opt.textContent = text;
+    });
+  }
+
+  // TABS
+  function showTab(id) {
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // NOTIFICATIONS
+  function showNotif(msg) {
+    const n = document.getElementById('notif');
+    n.textContent = msg;
+    n.classList.add('show');
+    setTimeout(() => n.classList.remove('show'), 3500);
+  }
+
+  function submitBooking() {
+    const name = document.getElementById('book-name').value.trim();
+    const phone = document.getElementById('book-phone').value.trim();
+    const date = document.getElementById('book-date').value;
+    const time = document.getElementById('book-time').value;
+    if (!name || !phone || !date || !time) {
+      showNotif(currentLang === 'es' ? '⚠️ Rellena todos los campos' : '⚠️ Please fill all fields');
+      return;
+    }
+    showNotif(currentLang === 'es' ? `✅ Reserva enviada, ${name}! Te contactamos pronto.` : `✅ Booking sent, ${name}! We'll contact you soon.`);
+    document.getElementById('book-name').value = '';
+    document.getElementById('book-phone').value = '';
+  }
+
+  function submitContact() {
+    const name = document.getElementById('c-name').value.trim();
+    const email = document.getElementById('c-email').value.trim();
+    const msg = document.getElementById('c-msg').value.trim();
+    if (!name || !email || !msg) {
+      showNotif(currentLang === 'es' ? '⚠️ Rellena todos los campos' : '⚠️ Please fill all fields');
+      return;
+    }
+    showNotif(currentLang === 'es' ? `✅ Mensaje enviado, ${name}! Te respondemos pronto.` : `✅ Message sent, ${name}! We'll get back to you soon.`);
+    document.getElementById('c-name').value = '';
+    document.getElementById('c-email').value = '';
+    document.getElementById('c-msg').value = '';
+  }
+</script>
+</body>
+</html>
